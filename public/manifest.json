@@ -1,0 +1,28 @@
+{
+  "name": "CodeKeys - Interactive Code Typing Practice",
+  "short_name": "CodeKeys",
+  "description": "Learn programming by typing code with real-time feedback and progress tracking",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/image.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/image.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity", "developer-tools"],
+  "lang": "en",
+  "dir": "ltr"
+}
