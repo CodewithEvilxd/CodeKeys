@@ -6341,5 +6341,1110 @@ console.log(greet("World")); // "Hello, World!"
 import { add as sum, subtract as minus } from './math.js';
 console.log(sum(2, 3)); // 5
 console.log(minus(8, 3)); // 5`
+  },
+
+  // Additional JavaScript Easy Lessons (171-180)
+  {
+    id: 171,
+    title: "JavaScript Boolean Logic",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Logic",
+    estimatedTime: 3,
+    description: "Understanding boolean values and logical operators",
+    code: `// Boolean values
+let isTrue = true;
+let isFalse = false;
+
+console.log(isTrue);   // true
+console.log(isFalse);  // false
+
+// Logical AND (&&)
+console.log(true && true);    // true
+console.log(true && false);   // false
+console.log(false && true);   // false
+console.log(false && false);  // false
+
+// Logical OR (||)
+console.log(true || true);    // true
+console.log(true || false);   // true
+console.log(false || true);   // true
+console.log(false || false);  // false
+
+// Logical NOT (!)
+console.log(!true);   // false
+console.log(!false);  // true
+
+// Combining operators
+let age = 25;
+let hasLicense = true;
+let canDrive = age >= 18 && hasLicense;
+console.log("Can drive:", canDrive);  // true`
+  },
+  {
+    id: 172,
+    title: "JavaScript Comparison Operators",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Operators",
+    estimatedTime: 3,
+    description: "Comparing values with different operators",
+    code: `// Equal to (==) - loose equality
+console.log(5 == 5);      // true
+console.log(5 == "5");    // true (type coercion)
+console.log(0 == false);  // true
+
+// Strictly equal to (===) - strict equality
+console.log(5 === 5);      // true
+console.log(5 === "5");    // false (different types)
+console.log(0 === false);  // false
+
+// Not equal (!= and !==)
+console.log(5 != 4);       // true
+console.log(5 != "5");     // false (type coercion)
+console.log(5 !== "5");    // true (strict inequality)
+
+// Greater than and less than
+console.log(10 > 5);       // true
+console.log(5 < 10);       // true
+console.log(5 >= 5);       // true
+console.log(5 <= 4);       // false
+
+// Comparing strings
+console.log("apple" < "banana");  // true (alphabetical order)
+console.log("Apple" < "apple");   // true (uppercase comes first)`
+  },
+  {
+    id: 173,
+    title: "JavaScript Ternary Operator",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Operators",
+    estimatedTime: 3,
+    description: "Conditional operator for concise if-else",
+    code: `// Basic ternary operator
+let age = 20;
+let status = age >= 18 ? "adult" : "minor";
+console.log(status);  // "adult"
+
+// Nested ternary
+let score = 85;
+let grade = score >= 90 ? "A" :
+          score >= 80 ? "B" :
+          score >= 70 ? "C" : "F";
+console.log(grade);  // "B"
+
+// With function calls
+function getGreeting(hour) {
+ return hour < 12 ? "Good morning" :
+        hour < 18 ? "Good afternoon" : "Good evening";
+}
+
+console.log(getGreeting(9));   // "Good morning"
+console.log(getGreeting(14));  // "Good afternoon"
+console.log(getGreeting(20));  // "Good evening"
+
+// In template literals
+let temperature = 25;
+let weather = \`It's \${temperature > 20 ? "warm" : "cool"} outside\`;
+console.log(weather);  // "It's warm outside"`
+  },
+  {
+    id: 174,
+    title: "JavaScript Type Checking",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Types",
+    estimatedTime: 3,
+    description: "Checking variable types with typeof",
+    code: `// typeof operator
+console.log(typeof 42);           // "number"
+console.log(typeof "hello");       // "string"
+console.log(typeof true);          // "boolean"
+console.log(typeof undefined);     // "undefined"
+console.log(typeof null);          // "object" (this is a bug in JS)
+console.log(typeof []);            // "object"
+console.log(typeof {});            // "object"
+console.log(typeof function(){});  // "function"
+
+// Checking for arrays
+let arr = [1, 2, 3];
+console.log(Array.isArray(arr));   // true
+console.log(arr instanceof Array); // true
+
+// Checking for null
+let value = null;
+console.log(value === null);       // true
+console.log(typeof value);         // "object"
+
+// Checking for undefined
+let notDefined;
+console.log(notDefined === undefined);  // true
+console.log(typeof notDefined);         // "undefined"
+
+// Practical type checking
+function getType(value) {
+ if (value === null) return "null";
+ if (Array.isArray(value)) return "array";
+ return typeof value;
+}
+
+console.log(getType("hello"));  // "string"
+console.log(getType([1,2,3]));   // "array"
+console.log(getType(null));     // "null"`
+  },
+  {
+    id: 175,
+    title: "JavaScript Switch Statement",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Control Flow",
+    estimatedTime: 4,
+    description: "Multiple condition checking with switch",
+    code: `// Basic switch statement
+let day = 3;
+let dayName;
+
+switch (day) {
+ case 1:
+   dayName = "Monday";
+   break;
+ case 2:
+   dayName = "Tuesday";
+   break;
+ case 3:
+   dayName = "Wednesday";
+   break;
+ case 4:
+   dayName = "Thursday";
+   break;
+ case 5:
+   dayName = "Friday";
+   break;
+ case 6:
+   dayName = "Saturday";
+   break;
+ case 7:
+   dayName = "Sunday";
+   break;
+ default:
+   dayName = "Invalid day";
+}
+
+console.log(dayName);  // "Wednesday"
+
+// Switch with strings
+let fruit = "apple";
+let color;
+
+switch (fruit) {
+ case "apple":
+ case "cherry":
+   color = "red";
+   break;
+ case "banana":
+   color = "yellow";
+   break;
+ case "orange":
+   color = "orange";
+   break;
+ default:
+   color = "unknown";
+}
+
+console.log(color);  // "red"
+
+// Switch without break (fall-through)
+let grade = "B";
+let description;
+
+switch (grade) {
+ case "A":
+   description = "Excellent";
+   break;
+ case "B":
+ case "C":
+   description = "Good";
+   break;
+ case "D":
+ case "F":
+   description = "Needs improvement";
+   break;
+ default:
+   description = "Invalid grade";
+}
+
+console.log(description);  // "Good"`
+  },
+  {
+    id: 176,
+    title: "JavaScript While Loops",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Loops",
+    estimatedTime: 3,
+    description: "Using while and do-while loops",
+    code: `// While loop
+let count = 1;
+console.log("While loop:");
+while (count <= 5) {
+ console.log(count);
+ count++;
+}
+
+// Do-while loop (executes at least once)
+let num = 1;
+console.log("Do-while loop:");
+do {
+ console.log(num);
+ num++;
+} while (num <= 5);
+
+// While loop with condition
+let password = "";
+console.log("Enter password simulation:");
+while (password !== "secret") {
+ // In real code, you'd get input from user
+ password = password === "" ? "wrong" : "secret";
+ console.log("Checking password...");
+}
+console.log("Access granted!");
+
+// While loop for array processing
+let numbers = [1, 2, 3, 4, 5];
+let sum = 0;
+let index = 0;
+
+while (index < numbers.length) {
+ sum += numbers[index];
+ index++;
+}
+
+console.log("Sum:", sum);  // 15`
+  },
+  {
+    id: 177,
+    title: "JavaScript For-In Loop",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Loops",
+    estimatedTime: 3,
+    description: "Iterating over object properties",
+    code: `// For-in loop with objects
+let person = {
+ name: "John",
+ age: 30,
+ city: "New York",
+ job: "Developer"
+};
+
+console.log("Person properties:");
+for (let key in person) {
+ console.log(key + ": " + person[key]);
+}
+
+// For-in with arrays (not recommended)
+let fruits = ["apple", "banana", "orange"];
+console.log("Array indices:");
+for (let index in fruits) {
+ console.log(index + ": " + fruits[index]);
+}
+
+// Better way for arrays
+console.log("Array values:");
+for (let fruit of fruits) {
+ console.log(fruit);
+}
+
+// Checking property ownership
+let car = {
+ make: "Toyota",
+ model: "Camry"
+};
+
+// Adding property to prototype (for demonstration)
+Object.prototype.year = 2020;
+
+console.log("All properties:");
+for (let prop in car) {
+ console.log(prop + ": " + car[prop]);
+}
+
+console.log("Own properties only:");
+for (let prop in car) {
+ if (car.hasOwnProperty(prop)) {
+   console.log(prop + ": " + car[prop]);
+ }
+}`
+  },
+  {
+    id: 178,
+    title: "JavaScript Try-Catch",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Error Handling",
+    estimatedTime: 4,
+    description: "Basic error handling with try-catch",
+    code: `// Basic try-catch
+try {
+ let result = 10 / 0;
+ console.log("Result:", result);
+} catch (error) {
+ console.log("Error caught:", error.message);
+}
+
+// Try-catch-finally
+function divide(a, b) {
+ try {
+   if (b === 0) {
+     throw new Error("Division by zero");
+   }
+   return a / b;
+ } catch (error) {
+   console.log("Error in divide function:", error.message);
+   return null;
+ } finally {
+   console.log("Division operation completed");
+ }
+}
+
+console.log(divide(10, 2));  // 5
+console.log(divide(10, 0));  // null
+
+// Catching different error types
+function processData(data) {
+ try {
+   if (typeof data !== "string") {
+     throw new TypeError("Data must be a string");
+   }
+   if (data.length === 0) {
+     throw new RangeError("String cannot be empty");
+   }
+   return data.toUpperCase();
+ } catch (error) {
+   if (error instanceof TypeError) {
+     console.log("Type error:", error.message);
+   } else if (error instanceof RangeError) {
+     console.log("Range error:", error.message);
+   } else {
+     console.log("Unknown error:", error.message);
+   }
+   return null;
+ }
+}
+
+console.log(processData("hello"));    // "HELLO"
+console.log(processData(123));        // Type error
+console.log(processData(""));         // Range error`
+  },
+  {
+    id: 179,
+    title: "JavaScript Date Objects",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Objects",
+    estimatedTime: 4,
+    description: "Working with dates and time",
+    code: `// Creating Date objects
+let now = new Date();
+console.log("Current date:", now);
+
+// Creating specific dates
+let birthday = new Date(1990, 5, 15);  // June 15, 1990
+console.log("Birthday:", birthday);
+
+let specificDate = new Date("2023-12-25");
+console.log("Christmas 2023:", specificDate);
+
+// Getting date components
+console.log("Year:", now.getFullYear());
+console.log("Month:", now.getMonth());  // 0-based
+console.log("Date:", now.getDate());
+console.log("Day of week:", now.getDay());  // 0 = Sunday
+console.log("Hours:", now.getHours());
+console.log("Minutes:", now.getMinutes());
+console.log("Seconds:", now.getSeconds());
+
+// Setting date components
+let date = new Date();
+date.setFullYear(2024);
+date.setMonth(11);  // December
+date.setDate(25);
+console.log("Modified date:", date);
+
+// Date formatting
+console.log("ISO string:", now.toISOString());
+console.log("Locale string:", now.toLocaleString());
+console.log("Date string:", now.toDateString());
+console.log("Time string:", now.toTimeString());
+
+// Date calculations
+let today = new Date();
+let tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1);
+console.log("Tomorrow:", tomorrow);
+
+let age = today.getFullYear() - birthday.getFullYear();
+console.log("Age:", age);
+
+// Time differences
+let start = new Date();
+setTimeout(() => {
+ let end = new Date();
+ let diff = end - start;
+ console.log("Time elapsed:", diff, "milliseconds");
+}, 1000);`
+  },
+  {
+    id: 180,
+    title: "JavaScript Global Methods",
+    language: "javascript",
+    difficulty: "easy",
+    category: "Methods",
+    estimatedTime: 3,
+    description: "Common global methods and functions",
+    code: `// Number methods
+console.log("Parse int:", parseInt("42.5"));      // 42
+console.log("Parse float:", parseFloat("3.14"));  // 3.14
+console.log("Is NaN:", isNaN("hello"));           // true
+console.log("Is NaN:", isNaN(42));                // false
+console.log("Is finite:", isFinite(42));          // true
+console.log("Is finite:", isFinite(Infinity));    // false
+
+// String methods
+console.log("Parse to string:", String(42));      // "42"
+console.log("Number to string:", (42).toString()); // "42"
+
+// Array methods
+console.log("Is array:", Array.isArray([1,2,3])); // true
+console.log("Is array:", Array.isArray("hello"));  // false
+
+// Object methods
+let obj = {a: 1, b: 2};
+console.log("Keys:", Object.keys(obj));           // ["a", "b"]
+console.log("Values:", Object.values(obj));       // [1, 2]
+console.log("Has property:", obj.hasOwnProperty("a")); // true
+
+// Math methods
+console.log("Random:", Math.random());            // Random number 0-1
+console.log("Round:", Math.round(3.7));           // 4
+console.log("Floor:", Math.floor(3.7));           // 3
+console.log("Ceil:", Math.ceil(3.2));             // 4
+console.log("Max:", Math.max(1, 5, 3));          // 5
+console.log("Min:", Math.min(1, 5, 3));          // 1
+console.log("Power:", Math.pow(2, 3));           // 8
+console.log("Square root:", Math.sqrt(16));       // 4
+
+// JSON methods
+let data = {name: "John", age: 30};
+let jsonString = JSON.stringify(data);
+console.log("JSON string:", jsonString);
+
+let parsedData = JSON.parse(jsonString);
+console.log("Parsed object:", parsedData);
+
+// Timing functions
+console.log("Current time:", Date.now());
+
+setTimeout(() => {
+ console.log("This runs after 1 second");
+}, 1000);
+
+let count = 0;
+let interval = setInterval(() => {
+ count++;
+ console.log("Count:", count);
+ if (count >= 3) {
+   clearInterval(interval);
+ }
+}, 500);`
+  },
+
+  // C Hard Lessons (201-210)
+  {
+    id: 201,
+    title: "C Memory Management Advanced",
+    language: "c",
+    difficulty: "hard",
+    category: "Memory Management",
+    estimatedTime: 8,
+    description: "Advanced memory management techniques",
+    code: `#include <stdio.h>
+#include <stdlib.h>
+
+// Custom memory allocator
+typedef struct MemoryPool {
+   void *memory;
+   size_t size;
+   size_t used;
+} MemoryPool;
+
+MemoryPool* create_memory_pool(size_t size) {
+   MemoryPool *pool = (MemoryPool*)malloc(sizeof(MemoryPool));
+   pool->memory = malloc(size);
+   pool->size = size;
+   pool->used = 0;
+   return pool;
+}
+
+void* pool_alloc(MemoryPool *pool, size_t size) {
+   if (pool->used + size > pool->size) return NULL;
+   void *ptr = (char*)pool->memory + pool->used;
+   pool->used += size;
+   return ptr;
+}
+
+int main() {
+   MemoryPool *pool = create_memory_pool(1024);
+   int *num = (int*)pool_alloc(pool, sizeof(int));
+   if (num) *num = 42;
+   printf("Pool allocated: %d\\n", *num);
+   free(pool->memory);
+   free(pool);
+   return 0;
+}`
+  },
+  {
+    id: 202,
+    title: "C Multithreading Basics",
+    language: "c",
+    difficulty: "hard",
+    category: "Multithreading",
+    estimatedTime: 9,
+    description: "Basic multithreading with pthreads",
+    code: `#include <stdio.h>
+#include <pthread.h>
+
+void* thread_func(void *arg) {
+   printf("Thread %ld running\\n", (long)arg);
+   return NULL;
+}
+
+int main() {
+   pthread_t thread;
+   pthread_create(&thread, NULL, thread_func, (void*)1);
+   pthread_join(thread, NULL);
+   printf("Thread completed\\n");
+   return 0;
+}`
+  },
+  {
+    id: 203,
+    title: "C Data Structures",
+    language: "c",
+    difficulty: "hard",
+    category: "Data Structures",
+    estimatedTime: 10,
+    description: "Implementing common data structures",
+    code: `#include <stdio.h>
+#include <stdlib.h>
+
+// Stack
+typedef struct Stack {
+   int *data;
+   int top;
+   int capacity;
+} Stack;
+
+Stack* create_stack(int cap) {
+   Stack *s = malloc(sizeof(Stack));
+   s->data = malloc(cap * sizeof(int));
+   s->top = -1;
+   s->capacity = cap;
+   return s;
+}
+
+void push(Stack *s, int val) {
+   if (s->top < s->capacity - 1) {
+       s->data[++s->top] = val;
+   }
+}
+
+int pop(Stack *s) {
+   return s->top >= 0 ? s->data[s->top--] : -1;
+}
+
+int main() {
+   Stack *stack = create_stack(5);
+   push(stack, 10);
+   push(stack, 20);
+   printf("Popped: %d\\n", pop(stack));
+   free(stack->data);
+   free(stack);
+   return 0;
+}`
+  },
+  {
+    id: 204,
+    title: "C System Programming",
+    language: "c",
+    difficulty: "hard",
+    category: "System Programming",
+    estimatedTime: 9,
+    description: "System calls and low-level programming",
+    code: `#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+   printf("Process ID: %d\\n", getpid());
+   printf("Parent ID: %d\\n", getppid());
+
+   pid_t pid = fork();
+   if (pid == 0) {
+       printf("Child process\\n");
+       execl("/bin/ls", "ls", NULL);
+   } else {
+       wait(NULL);
+       printf("Parent process\\n");
+   }
+   return 0;
+}`
+  },
+  {
+    id: 205,
+    title: "C Network Programming",
+    language: "c",
+    difficulty: "hard",
+    category: "Network Programming",
+    estimatedTime: 10,
+    description: "Socket programming basics",
+    code: `#include <stdio.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
+
+int main() {
+   int sock = socket(AF_INET, SOCK_STREAM, 0);
+   struct sockaddr_in addr;
+   addr.sin_family = AF_INET;
+   addr.sin_port = htons(8080);
+   addr.sin_addr.s_addr = INADDR_ANY;
+
+   bind(sock, (struct sockaddr*)&addr, sizeof(addr));
+   listen(sock, 5);
+
+   printf("Server listening on port 8080\\n");
+
+   int client = accept(sock, NULL, NULL);
+   char buffer[1024];
+   recv(client, buffer, sizeof(buffer), 0);
+   printf("Received: %s\\n", buffer);
+
+   send(client, "Hello from server!", 18, 0);
+   close(client);
+   close(sock);
+   return 0;
+}`
+  },
+  {
+    id: 206,
+    title: "C Compiler Design",
+    language: "c",
+    difficulty: "hard",
+    category: "Compiler Design",
+    estimatedTime: 12,
+    description: "Building a simple calculator compiler",
+    code: `#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+// Simple calculator
+int evaluate(char *expr) {
+   int result = 0;
+   char op = '+';
+   int num = 0;
+
+   for (int i = 0; expr[i]; i++) {
+       if (isdigit(expr[i])) {
+           num = num * 10 + (expr[i] - '0');
+       } else {
+           switch (op) {
+               case '+': result += num; break;
+               case '-': result -= num; break;
+               case '*': result *= num; break;
+               case '/': result /= num; break;
+           }
+           op = expr[i];
+           num = 0;
+       }
+   }
+
+   // Last operation
+   switch (op) {
+       case '+': result += num; break;
+       case '-': result -= num; break;
+       case '*': result *= num; break;
+       case '/': result /= num; break;
+   }
+
+   return result;
+}
+
+int main() {
+   char expr[] = "2+3*4";
+   printf("Result: %d\\n", evaluate(expr));
+   return 0;
+}`
+  },
+  {
+    id: 207,
+    title: "C Graphics Programming",
+    language: "c",
+    difficulty: "hard",
+    category: "Graphics",
+    estimatedTime: 10,
+    description: "Simple graphics with OpenGL",
+    code: `#include <GL/glut.h>
+
+void display() {
+   glClear(GL_COLOR_BUFFER_BIT);
+   glBegin(GL_TRIANGLES);
+       glColor3f(1, 0, 0);
+       glVertex2f(-0.5, -0.5);
+       glColor3f(0, 1, 0);
+       glVertex2f(0.5, -0.5);
+       glColor3f(0, 0, 1);
+       glVertex2f(0, 0.5);
+   glEnd();
+   glutSwapBuffers();
+}
+
+int main(int argc, char** argv) {
+   glutInit(&argc, argv);
+   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+   glutInitWindowSize(800, 600);
+   glutCreateWindow("C Graphics");
+   glutDisplayFunc(display);
+   glutMainLoop();
+   return 0;
+}`
+  },
+  {
+    id: 208,
+    title: "C Database Programming",
+    language: "c",
+    difficulty: "hard",
+    category: "Database",
+    estimatedTime: 9,
+    description: "SQLite database integration",
+    code: `#include <stdio.h>
+#include <sqlite3.h>
+
+int callback(void *data, int argc, char **argv, char **col) {
+   for (int i = 0; i < argc; i++) {
+       printf("%s: %s\\n", col[i], argv[i] ? argv[i] : "NULL");
+   }
+   printf("\\n");
+   return 0;
+}
+
+int main() {
+   sqlite3 *db;
+   sqlite3_open("test.db", &db);
+
+   sqlite3_exec(db,
+       "CREATE TABLE users (id INTEGER, name TEXT, age INTEGER);",
+       NULL, NULL, NULL);
+
+   sqlite3_exec(db,
+       "INSERT INTO users VALUES (1, 'John', 25);",
+       NULL, NULL, NULL);
+
+   sqlite3_exec(db,
+       "SELECT * FROM users;",
+       callback, NULL, NULL);
+
+   sqlite3_close(db);
+   return 0;
+}`
+  },
+  {
+    id: 209,
+    title: "C Embedded Systems",
+    language: "c",
+    difficulty: "hard",
+    category: "Embedded",
+    estimatedTime: 11,
+    description: "Embedded C programming concepts",
+    code: `#include <stdio.h>
+#include <stdint.h>
+
+// Register definitions (simulated)
+#define GPIO_BASE 0x40000000
+#define GPIO_DATA (*((volatile uint32_t*)(GPIO_BASE + 0x00)))
+#define GPIO_DIR  (*((volatile uint32_t*)(GPIO_BASE + 0x04)))
+
+// Bit manipulation macros
+#define SET_BIT(reg, bit)   ((reg) |= (1 << (bit)))
+#define CLEAR_BIT(reg, bit) ((reg) &= ~(1 << (bit)))
+#define TOGGLE_BIT(reg, bit) ((reg) ^= (1 << (bit)))
+#define CHECK_BIT(reg, bit) ((reg) & (1 << (bit)))
+
+// GPIO functions
+void gpio_init(uint8_t pin, uint8_t direction) {
+   if (direction) {
+       SET_BIT(GPIO_DIR, pin);   // Output
+   } else {
+       CLEAR_BIT(GPIO_DIR, pin); // Input
+   }
+}
+
+void gpio_write(uint8_t pin, uint8_t value) {
+   if (value) {
+       SET_BIT(GPIO_DATA, pin);
+   } else {
+       CLEAR_BIT(GPIO_DATA, pin);
+   }
+}
+
+uint8_t gpio_read(uint8_t pin) {
+   return CHECK_BIT(GPIO_DATA, pin) ? 1 : 0;
+}
+
+// Simple state machine
+typedef enum {
+   STATE_INIT,
+   STATE_RUNNING,
+   STATE_ERROR,
+   STATE_STOPPED
+} SystemState;
+
+SystemState current_state = STATE_INIT;
+
+void state_machine_update() {
+   switch (current_state) {
+       case STATE_INIT:
+           printf("Initializing system...\\n");
+           current_state = STATE_RUNNING;
+           break;
+
+       case STATE_RUNNING:
+           printf("System running\\n");
+           // Check for errors
+           if (gpio_read(0)) {  // Simulate error condition
+               current_state = STATE_ERROR;
+           }
+           break;
+
+       case STATE_ERROR:
+           printf("Error detected!\\n");
+           current_state = STATE_STOPPED;
+           break;
+
+       case STATE_STOPPED:
+           printf("System stopped\\n");
+           break;
+   }
+}
+
+// Interrupt simulation
+volatile uint8_t interrupt_flag = 0;
+
+void timer_interrupt() {
+   interrupt_flag = 1;
+}
+
+void main_loop() {
+   while (1) {
+       if (interrupt_flag) {
+           interrupt_flag = 0;
+           // Handle timer interrupt
+           gpio_toggle(1);
+       }
+
+       state_machine_update();
+
+       // Small delay
+       for (volatile int i = 0; i < 100000; i++);
+   }
+}
+
+int main() {
+   // Initialize GPIO
+   gpio_init(0, 0);  // Pin 0 as input
+   gpio_init(1, 1);  // Pin 1 as output
+
+   printf("Embedded C Demo\\n");
+
+   // Simulate some GPIO operations
+   gpio_write(1, 1);  // Turn on LED
+   printf("LED ON\\n");
+
+   for (int i = 0; i < 5; i++) {
+       state_machine_update();
+   }
+
+   gpio_write(1, 0);  // Turn off LED
+   printf("LED OFF\\n");
+
+   return 0;
+}`
+  },
+  {
+    id: 210,
+    title: "C Performance Optimization",
+    language: "c",
+    difficulty: "hard",
+    category: "Performance",
+    estimatedTime: 10,
+    description: "Code optimization techniques",
+    code: `#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Naive implementation
+long long sum_array_naive(int *arr, int size) {
+   long long sum = 0;
+   for (int i = 0; i < size; i++) {
+       sum += arr[i];
+   }
+   return sum;
+}
+
+// Optimized with loop unrolling
+long long sum_array_unrolled(int *arr, int size) {
+   long long sum = 0;
+   int i = 0;
+
+   // Unroll loop by 4
+   for (; i <= size - 4; i += 4) {
+       sum += arr[i] + arr[i+1] + arr[i+2] + arr[i+3];
+   }
+
+   // Handle remaining elements
+   for (; i < size; i++) {
+       sum += arr[i];
+   }
+
+   return sum;
+}
+
+// Cache-friendly matrix multiplication
+void matrix_multiply_cache_friendly(double **A, double **B, double **C, int n) {
+   for (int i = 0; i < n; i++) {
+       for (int j = 0; j < n; j++) {
+           C[i][j] = 0;
+           for (int k = 0; k < n; k++) {
+               C[i][j] += A[i][k] * B[k][j];
+           }
+       }
+   }
+}
+
+// Memory pool for frequent allocations
+typedef struct MemoryPool {
+   char *buffer;
+   size_t buffer_size;
+   size_t chunk_size;
+   char *free_list;
+} MemoryPool;
+
+MemoryPool* create_pool(size_t chunk_size, size_t num_chunks) {
+   MemoryPool *pool = malloc(sizeof(MemoryPool));
+   pool->chunk_size = chunk_size;
+   pool->buffer_size = chunk_size * num_chunks;
+   pool->buffer = malloc(pool->buffer_size);
+   pool->free_list = pool->buffer;
+
+   // Initialize free list
+   char *current = pool->buffer;
+   for (size_t i = 0; i < num_chunks - 1; i++) {
+       *(char**)current = current + chunk_size;
+       current += chunk_size;
+   }
+   *(char**)current = NULL;
+
+   return pool;
+}
+
+void* pool_alloc(MemoryPool *pool) {
+   if (pool->free_list == NULL) return NULL;
+
+   void *chunk = pool->free_list;
+   pool->free_list = *(char**)pool->free_list;
+   return chunk;
+}
+
+void pool_free(MemoryPool *pool, void *chunk) {
+   *(char**)chunk = pool->free_list;
+   pool->free_list = chunk;
+}
+
+// Benchmarking function
+double benchmark(void (*func)(void*), void *arg, int iterations) {
+   clock_t start = clock();
+
+   for (int i = 0; i < iterations; i++) {
+       func(arg);
+   }
+
+   clock_t end = clock();
+   return (double)(end - start) / CLOCKS_PER_SEC;
+}
+
+// Test functions for benchmarking
+void test_naive(void *arg) {
+   int *arr = (int*)arg;
+   sum_array_naive(arr, 10000);
+}
+
+void test_unrolled(void *arg) {
+   int *arr = (int*)arg;
+   sum_array_unrolled(arr, 10000);
+}
+
+int main() {
+   printf("C Performance Optimization Demo\\n");
+   printf("================================\\n\\n");
+
+   // Array summation comparison
+   const int ARRAY_SIZE = 10000;
+   int *test_array = malloc(ARRAY_SIZE * sizeof(int));
+
+   // Fill array with random values
+   for (int i = 0; i < ARRAY_SIZE; i++) {
+       test_array[i] = rand() % 100;
+   }
+
+   printf("Array Summation Benchmark:\\n");
+   double time_naive = benchmark(test_naive, test_array, 1000);
+   double time_unrolled = benchmark(test_unrolled, test_array, 1000);
+
+   printf("Naive implementation: %.4f seconds\\n", time_naive);
+   printf("Unrolled implementation: %.4f seconds\\n", time_unrolled);
+   printf("Speedup: %.2fx\\n\\n", time_naive / time_unrolled);
+
+   // Memory pool demonstration
+   printf("Memory Pool Demonstration:\\n");
+   MemoryPool *pool = create_pool(sizeof(int), 10);
+
+   int *numbers[10];
+   for (int i = 0; i < 10; i++) {
+       numbers[i] = pool_alloc(pool);
+       if (numbers[i]) {
+           *numbers[i] = i * 10;
+           printf("Allocated: %d\\n", *numbers[i]);
+       }
+   }
+
+   // Free some allocations
+   pool_free(pool, numbers[3]);
+   pool_free(pool, numbers[7]);
+
+   // Allocate again (should reuse freed memory)
+   int *reused1 = pool_alloc(pool);
+   int *reused2 = pool_alloc(pool);
+
+   if (reused1) *reused1 = 999;
+   if (reused2) *reused2 = 888;
+
+   printf("Reused allocations: %d, %d\\n", *reused1, *reused2);
+
+   free(test_array);
+   free(pool->buffer);
+   free(pool);
+
+   return 0;
+}`
   }
 ];

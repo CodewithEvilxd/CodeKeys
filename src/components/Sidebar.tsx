@@ -38,7 +38,7 @@ export default function Sidebar({
     const languageMatch = lesson.language === selectedLanguage;
     const difficultyMatch = selectedDifficulty === 'all' || lesson.difficulty === selectedDifficulty;
     return languageMatch && difficultyMatch;
-  });
+  }).sort((a, b) => a.id - b.id); // Sort by ID to ensure proper order
   const totalCount = filteredLessons.length;
 
   return (

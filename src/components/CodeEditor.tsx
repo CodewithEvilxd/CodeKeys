@@ -96,7 +96,7 @@ export default function CodeEditor({
   };
 
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex-1 flex flex-col min-h-0">
       {isComplete && originalCode && wpm !== undefined && accuracy !== undefined && errors !== undefined && language && (
         <AIFeedback
           userInput={userInput}
@@ -107,7 +107,7 @@ export default function CodeEditor({
           language={language}
         />
       )}
-      <div className="flex-1 relative">
+      <div className="flex-1 relative overflow-y-auto min-h-0">
         <div className="absolute inset-0 p-6">
           <div className="font-mono text-sm leading-relaxed whitespace-pre-wrap">
             {characterStates.map((state, index) => (
@@ -123,7 +123,7 @@ export default function CodeEditor({
             )}
           </div>
         </div>
-        
+
         <textarea
           ref={textareaRef}
           value={userInput}
