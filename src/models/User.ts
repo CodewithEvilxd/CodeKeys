@@ -1,34 +1,33 @@
-import { ObjectId } from 'mongodb';
+// Legacy User interface - now using Prisma generated types
+// This file is kept for backward compatibility and type definitions
 
 export interface User {
-  _id?: ObjectId;
+  id: string;
   email: string;
   name: string;
   password: string;
   createdAt: Date;
   updatedAt: Date;
-  preferences: {
-    selectedLanguage: 'javascript' | 'python' | 'cpp' | 'c' | 'java';
-    selectedDifficulty: 'easy' | 'medium' | 'hard' | 'all';
-    practiceMode: boolean;
-    practiceTimer: number;
-  };
-  stats: {
-    totalLessonsCompleted: number;
-    totalPracticeTime: number;
-    currentStreak: number;
-    bestStreak: number;
-    bestWPM: number;
-    averageWPM: number;
-    averageAccuracy: number;
-    totalErrors: number;
-    favoriteLanguage: string;
-  };
-  progress: {
-    completedLessons: number[];
-    practiceSessions: PracticeSession[];
-    achievements: string[];
-  };
+  // Preferences (flattened in Prisma schema)
+  selectedLanguage: 'javascript' | 'python' | 'cpp' | 'c' | 'java';
+  selectedDifficulty: 'easy' | 'medium' | 'hard' | 'all';
+  practiceMode: boolean;
+  practiceTimer: number;
+  // Stats (flattened in Prisma schema)
+  totalLessonsCompleted: number;
+  totalPracticeTime: number;
+  currentStreak: number;
+  bestStreak: number;
+  bestWPM: number;
+  averageWPM: number;
+  averageAccuracy: number;
+  totalErrors: number;
+  favoriteLanguage: string;
+  // Progress
+  completedLessons: number[];
+  achievements: string[];
+  // Relations
+  practiceSessions: PracticeSession[];
 }
 
 export interface PracticeSession {

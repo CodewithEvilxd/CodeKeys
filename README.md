@@ -56,14 +56,14 @@ A modern, dark-themed code typing practice platform built with Next.js 14+, Type
 - **Lucide React** for beautiful, consistent icons
 - **PWA Support** with Service Workers and Web App Manifest
 - **Local Storage** for offline progress persistence
-- **MongoDB** integration for cloud data storage
+- **PostgreSQL** integration for cloud data storage (via Prisma)
 - **Google Gemini AI** for intelligent code analysis and feedback
 
 ## 📦 Installation
 
 ### Prerequisites
 - Node.js 18+ and npm
-- MongoDB (optional, for cloud features)
+- PostgreSQL (via Prisma, for cloud features)
 - Git
 
 ### Quick Start
@@ -133,7 +133,7 @@ codekeys/
 │   │   └── useTyping.ts     # Typing state management
 │   ├── lib/
 │   │   ├── gemini.ts        # AI code analysis
-│   │   ├── mongodb.ts       # Database connection
+│   │   ├── prisma.ts        # Database connection (Prisma)
 │   │   └── utils.ts         # Helper functions
 │   └── types/
 │       ├── css.d.ts         # CSS module types
@@ -184,7 +184,7 @@ codekeys/
 
 ### Data Persistence
 - **Local Storage** - Progress saved automatically in browser
-- **Cloud Sync** - Optional MongoDB integration for cross-device sync
+- **Cloud Sync** - PostgreSQL integration for cross-device sync (via Prisma)
 - **Offline Mode** - Full functionality without internet connection
 
 ## 🎨 Customization
@@ -229,8 +229,8 @@ npm start
 # Required for AI features
 GOOGLE_GEMINI_API_KEY=your_gemini_api_key
 
-# Optional for cloud storage
-MONGODB_URI=mongodb://localhost:27017/codekeys
+# Required for cloud storage
+DATABASE_URL="postgresql://username:password@hostname:5432/database"
 ```
 
 ## 📱 Responsive Design

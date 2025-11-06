@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Preferences
+  selectedLanguage String @default("javascript")
+  selectedDifficulty String @default("easy")
+  practiceMode Boolean @default(false)
+  practiceTimer Int @default(0)
+
+  // Stats
+  totalLessonsCompleted Int @default(0)
+  totalPracticeTime Int @default(0)
+  currentStreak Int @default(0)
+  bestStreak Int @default(0)
+  bestWPM Int @default(0)
+  averageWPM Float @default(0.0)
+  averageAccuracy Float @default(0.0)
+  totalErrors Int @default(0)
+  favoriteLanguage String @default("")
+
+  // Progress
+  completedLessons Int[]
+  achievements String[]
+
+  // Relations
+  practiceSessions PracticeSession[]
+
+  @@map("users")
+}
+
+model PracticeSession {
+  id String @id @default(cuid())
+  userId String
+  startTime Int
+  endTime Int
+  duration Int
+  lessonsCompleted Int
+  averageWPM Float
+  averageAccuracy Float
+  difficulty String
+  language String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("practice_sessions")
+}
