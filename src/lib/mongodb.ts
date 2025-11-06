@@ -6,6 +6,10 @@ if (!process.env.MONGODB_URI) {
   process.env.MONGODB_URI = 'mongodb://localhost:27017/CodeKeys';
 }
 
+if (process.env.MONGODB_URI && process.env.MONGODB_URI.includes('localhost')) {
+  console.warn('Using localhost MongoDB URI - ensure MongoDB is running locally');
+}
+
 const uri = process.env.MONGODB_URI;
 const options = {};
 
@@ -21,13 +25,19 @@ if (process.env.NODE_ENV === 'development') {
 
   if (!globalWithMongo._mongoClientPromise) {
     client = new MongoClient(uri, options);
-    globalWithMongo._mongoClientPromise = client.connect();
+    globalWithMongo._mongoClientPromise = client.connect().catch(err => {
+      console.error('Failed to connect to MongoDB:', err);
+      throw err;
+    });
   }
   clientPromise = globalWithMongo._mongoClientPromise;
 } else {
   // In production mode, it's best to not use a global variable.
   client = new MongoClient(uri, options);
-  clientPromise = client.connect();
+  clientPromise = client.connect().catch(err => {
+    console.error('Failed to connect to MongoDB:', err);
+    throw err;
+  });
 }
 
 // Export a module-scoped MongoClient promise. By doing this in a
@@ -35,6 +45,11 @@ if (process.env.NODE_ENV === 'development') {
 export default clientPromise;
 
 export const getDatabase = async (): Promise<Db> => {
-  const client = await clientPromise;
-  return client.db('CodeKeys');
+  try {
+    const client = await clientPromise;
+    return client.db('CodeKeys');
+  } catch (error) {
+    console.error('Failed to get database:', error);
+    throw error;
+  }
 };

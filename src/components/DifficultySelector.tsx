@@ -1,7 +1,5 @@
 'use client';
 
-import { Check } from 'lucide-react';
-
 interface DifficultySelectorProps {
   selectedDifficulty: 'easy' | 'medium' | 'hard' | 'all';
   onDifficultyChange: (difficulty: 'easy' | 'medium' | 'hard' | 'all') => void;
@@ -14,27 +12,6 @@ export default function DifficultySelector({ selectedDifficulty, onDifficultyCha
     { id: 'medium' as const, label: 'Medium', color: 'yellow' as const, description: 'Intermediate level' },
     { id: 'hard' as const, label: 'Hard', color: 'red' as const, description: 'Advanced challenges' }
   ];
-
-  const getColorClasses = (difficulty: typeof difficulties[0], isSelected: boolean) => {
-    const baseClasses = "flex items-center justify-between p-3 rounded-lg transition-all duration-200 cursor-pointer";
-    
-    if (isSelected) {
-      switch (difficulty.color) {
-        case 'green':
-          return `${baseClasses} bg-green-400/20 border-2 border-green-400 text-green-400`;
-        case 'yellow':
-          return `${baseClasses} bg-yellow-400/20 border-2 border-yellow-400 text-yellow-400`;
-        case 'red':
-          return `${baseClasses} bg-red-400/20 border-2 border-red-400 text-red-400`;
-        case 'gray':
-          return `${baseClasses} bg-orange-400/20 border-2 border-orange-400 text-orange-400`;
-        default:
-          return `${baseClasses} bg-orange-400/20 border-2 border-orange-400 text-orange-400`;
-      }
-    }
-    
-    return `${baseClasses} bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white border-2 border-transparent`;
-  };
 
   return (
     <div className="space-y-1">
